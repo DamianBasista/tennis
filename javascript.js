@@ -21,6 +21,9 @@ const aiX = 910;
 let playerY = 200;
 let aiY = 200;
 
+const lineWidth = 6;
+const lineHeight = 16;
+
 function player(){
     ctx.fillStyle="#7fff00";
     ctx.fillRect(playerX, playerY, paddelWidth, paddelHeight);    
@@ -39,6 +42,11 @@ function ball(){
 function table(){
     ctx.fillStyle="black";
     ctx.fillRect(0,0,cw,ch);
+
+    for(let linePosition = 20; linePosition < ch; linePosition += 30){
+        ctx.fillStyle = "gray";
+        ctx.fillRect(cw/2 - lineWidth/2, linePosition, lineWidth, lineHeight);
+    }
 }
 table();
 ball();
