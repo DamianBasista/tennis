@@ -24,6 +24,9 @@ let aiY = 200;
 const lineWidth = 6;
 const lineHeight = 16;
 
+let ballSpeedX = 1;
+let ballSpeedY = 1;
+
 function player(){
     ctx.fillStyle="#7fff00";
     ctx.fillRect(playerX, playerY, paddelWidth, paddelHeight);    
@@ -37,6 +40,9 @@ function ai(){
 function ball(){
     ctx.fillStyle="#ffffff";
     ctx.fillRect(ballX, ballY, ballSize, ballSize);
+
+    ballX += ballSpeedX;
+    ballY += ballSpeedY;
 }
 
 function table(){
@@ -48,7 +54,11 @@ function table(){
         ctx.fillRect(cw/2 - lineWidth/2, linePosition, lineWidth, lineHeight);
     }
 }
-table();
-ball();
-player();
-ai();
+
+function game(){
+    table();
+    ball();
+    player();
+    ai();
+}
+setInterval(game, 50)
