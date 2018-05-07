@@ -63,10 +63,27 @@ function table(){
     }
 }
 
+topCanvas = canv.offsetTop;
+console.log(topCanvas);
+
+function playerPosition(e){
+    playerY = e.clientY - topCanvas - paddelHeight/2;
+
+    if(playerY >= ch - paddelHeight){
+        playerY = ch - paddelHeight
+    }
+
+    if(playerY <= 0){
+        playerY = 0;
+    }
+}
+
+canv.addEventListener("mousemove", playerPosition)
+
 function game(){
     table();
     ball();
     player();
     ai();
 }
-setInterval(game, 50)
+setInterval(game, 1000/ 60)
